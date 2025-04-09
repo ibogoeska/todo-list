@@ -60,7 +60,6 @@ function renderTodo(todo) {
   // ------------ Event listener on the checkbox ----------
   checkbox.addEventListener("click", () => {
     labelItem.classList.toggle("done");
-
     todo.status = !todo.status;
 
     saveTodoToLocaleStorage(todos);
@@ -171,6 +170,7 @@ doneRadioBtn.addEventListener("click", (e) => {
 
 notDoneRadioBtn.addEventListener("click", () => {
   awaitingTodos = todos.filter((t) => t.status === false);
+
   renderList(awaitingTodos, todoList);
 });
 
