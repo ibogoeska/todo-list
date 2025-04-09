@@ -11,7 +11,7 @@ const todoList = document.querySelector("#todoList");
 // ----------- Global variables ------------
 let todos = [];
 
-// ----------- MANIPULATING WITH TODOS ----------
+// ----------- CREATING CLASS FOR TODO OBJECT ----------
 class ToDo {
   constructor(title) {
     this.title = title;
@@ -44,6 +44,7 @@ form.addEventListener("submit", (e) => {
   }
 });
 
+// -------- RENDERING NEW TODOS ---------
 function renderTodo(todo) {
   const listItem = document.createElement("li");
 
@@ -109,16 +110,6 @@ function renderTodo(todo) {
     renderList(importantTodos, todoList);
   });
 
-  resetBtn.addEventListener("click", () => {
-    doneRadioBtn.checked = false;
-    notDoneRadioBtn.checked = false;
-    importantBtn.checked = false;
-
-    //sakam i posle reset important star da ostani markirana na todos shto se important
-
-    renderList(todos, todoList);
-  });
-
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("button", "delete-button");
   deleteBtn.innerText = "Delete";
@@ -129,14 +120,12 @@ function renderTodo(todo) {
     if (confirmDelete) {
       const filteredTodos = todos.filter((t) => t.id !== todo.id);
       todos = filteredTodos;
-      console.log("filtered todos", todos);
 
       listItem.remove();
 
       saveTodoToLocaleStorage(todos);
     }
   });
-
   // ------------ End of Event listener on the DELETE Btn ----------
 
   const editBtn = document.createElement("button");
@@ -144,7 +133,6 @@ function renderTodo(todo) {
   editBtn.innerText = "Edit";
 
   // ------------ Event listener on the EDIT Btn ----------
-
   editBtn.addEventListener("click", () => {
     if (!todo.isInEditMode) {
       editBtn.innerText = "Save";
@@ -165,6 +153,7 @@ function renderTodo(todo) {
       saveTodoToLocaleStorage(todos);
     }
   });
+  // ------------ End of Event listener on the EDIT Btn ----------
 
   buttons.append(importantStar, editBtn, deleteBtn);
   listItem.append(input, checkbox, labelItem, buttons);
@@ -175,7 +164,6 @@ function renderTodo(todo) {
 
 // Filter the todos which are done and show on the UI
 doneRadioBtn.addEventListener("click", (e) => {
-  console.log(e);
   doneTodos = todos.filter((t) => t.status === true);
 
   renderList(doneTodos, todoList);
@@ -186,9 +174,16 @@ notDoneRadioBtn.addEventListener("click", () => {
   renderList(awaitingTodos, todoList);
 });
 
+resetBtn.addEventListener("click", () => {
+  doneRadioBtn.checked = false;
+  notDoneRadioBtn.checked = false;
+  importantBtn.checked = false;
+
+  renderList(todos, todoList);
+});
+
 function renderList(todos, todoList) {
   todoList.innerHTML = "";
-  console.log("todos", todos);
   todos.forEach((todo) => {
     const listItem = renderTodo(todo);
     todoList.appendChild(listItem);
@@ -197,6 +192,7 @@ function renderList(todos, todoList) {
 
 const todosFromStorage = localStorage.getItem("todos");
 
+// --------- Save todos to the locale storage ---------
 function saveTodoToLocaleStorage(data) {
   localStorage.setItem("todos", JSON.stringify(data));
 }
