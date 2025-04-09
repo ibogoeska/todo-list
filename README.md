@@ -18,7 +18,7 @@ A simple and user-friendly To-Do List web application built with HTML, CSS and J
 - **Keep important tasks marked** even after refreshing or resetting the filter
 
 ## Demo 
-[Live Demo](https://github.com/ibogoeska
+[Live Demo](https://ibogoeska.github.io/todo-list/)
 
 ## Getting Started
 1. Clone the repository
