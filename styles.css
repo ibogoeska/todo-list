@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Overpass:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+
+:root {
+  --primary-bg: #6ba6ff;
+  --secondary-bg: #714cba;
+  --text-color: #333;
+  --button-bg: #333;
+  --button-hover-bg: #555;
+  --delete-button-bg: #ff4444;
+  --delete-button-hover-bg: #ff0000;
+  --edit-button-bg: #66cc66;
+  --edit-button-hover-bg: #44aa44;
+  --border-color: #ccc;
+  --star-color: #f5b400;
+}
+
+body {
+  font-family: Ubuntu, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at left,
+    var(--primary-bg),
+    var(--secondary-bg)
+  );
+  background-size: 100% 200%;
+  animation: gradientAnimation 20s ease-in-out infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-size: 100% 200%;
+  }
+
+  50% {
+    background-size: 150% 250%;
+  }
+}
+
+.container {
+  max-width: 400px;
+  margin: 5em auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: var(--text-color);
+  background-color: var(--primary-bg);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* .filter-container .inputs{
+  display: flex;
+
+} */
+.input-group:not(:last-child) {
+  margin-right: 15px;
+}
+
+.filter-container label {
+  font-size: 13px;
+}
+
+input.todo-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+}
+
+button.add-todo {
+  padding: 10px 20px;
+  background-color: var(--button-bg);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+button.filter {
+  color: var(--button-bg);
+  border: 1px solid var(--button-bg);
+}
+
+button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+button.filter:hover {
+  background-color: var(--button-bg);
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+.done {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.button {
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: var(--delete-button-bg);
+}
+
+.delete-button:hover {
+  background-color: var(--delete-button-hover-bg);
+}
+
+.important-btn {
+  display: inline-block;
+  margin-right: 15px;
+  cursor: pointer;
+  color: var(--star-color);
+}
+
+.important-btn i {
+  transition: all 0.2s;
+}
+
+.edit-input {
+  margin-right: 1em;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+.edit-button {
+  background-color: var(--edit-button-bg);
+  margin-right: 5px;
+}
+
+.edit-button:hover {
+  background-color: var(--edit-button-hover-bg);
+}
