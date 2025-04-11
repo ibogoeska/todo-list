@@ -40,6 +40,7 @@ body {
 
 .container {
   max-width: 400px;
+  font-size: 0.9em;
   margin: 5em auto;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
@@ -66,10 +67,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
-/* .filter-container .inputs{
-  display: flex;
 
-} */
 .input-group:not(:last-child) {
   margin-right: 15px;
 }
@@ -174,4 +172,11 @@ li:last-child {
 
 .edit-button:hover {
   background-color: var(--edit-button-hover-bg);
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    margin: 15px;
+    font-size: 0.7em;
+  }
 }
